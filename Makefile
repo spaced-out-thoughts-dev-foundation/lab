@@ -5,6 +5,3 @@ docker-build:
 
 docker-run:
 	docker run -p 8888:8888 --network="host" --restart always -d -t $(DOCKER_IMAGE)
-
-run:
-	docker-build docker-run
