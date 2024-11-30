@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Lab</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+</head>
+
+<body>
+  <div class="header-div">
+    <h1>Welcome to the Spaced Out Thoughts AI Lab</h1>
+  </div>
+
+  <div class="submission-div">
+    <form method="POST">
+      <label for="text_input">AI Prompt Text:</label>
+      <input type="text" id="text_input" name="text_input" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="result-div">
+    <h1>AI Result:</h1>
+    <div class="result-box">
+      {% if result %}
+      <h2>{{ result }}</h2>
+      {% else %}
+      <h2>Enter some text above to get started!</h2>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Spaced Out Thoughts Development Foundation. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

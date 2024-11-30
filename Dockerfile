@@ -1,19 +1,12 @@
-# Use an official Python image
-FROM python:3.10-slim
+FROM python:3.12-alpine
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy requirements file and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the Flask app
-COPY app.py .
+COPY . .
 
-# Expose the port the app runs on
 EXPOSE 8888
 
-# Command to run the app
-CMD ["python", "app.py"]
-
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8888", "app:app"]
