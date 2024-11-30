@@ -1,7 +1,7 @@
 import requests
 
 def perform_inference(input_data):
-    ai_url = "http://172.17.0.1:11434/api/chat"
+    ai_url = "http://127.0.0.1:11434/api/chat"
     payload = {
         "model": "llama3.2",
         "messages": [
@@ -14,13 +14,13 @@ def perform_inference(input_data):
     }
     
     try:
-        return requests.post(ai_url, json=payload, timeout=5).json()["message"]["content"]
+        return requests.post(ai_url, json=payload, timeout=120).json()["message"]["content"]
     except requests.exceptions.RequestException as e:
         print(f"Error contacting AI model: {e}")
         return "42 is the answer to life, the universe, and everything."
 
 def fetch_model_name():
-    ai_url = "http://172.17.0.1:11434/api/show"
+    ai_url = "http://127.0.0.1:11434/api/show"
     payload = {
         "model": "llama3.2"
     }
