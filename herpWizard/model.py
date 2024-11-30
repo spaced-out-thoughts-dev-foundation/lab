@@ -26,7 +26,7 @@ def fetch_model_name():
     }
     
     try:
-        result = requests.post(ai_url, json=payload, timeout=5).json()["message"]["content"]
+        result = requests.post(ai_url, json=payload, timeout=5).json()
         if result:
             return "llama3.2"
     except requests.exceptions.RequestException as e:
