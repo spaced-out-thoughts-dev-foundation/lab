@@ -20,10 +20,15 @@ def perform_inference(input_data):
         return "42 is the answer to life, the universe, and everything."
 
 def fetch_model_name():
-    ai_url = "http://localhost:11434/api/model"
+    ai_url = "http://localhost:11434/api/show"
+    payload = {
+        "model": "llama3.2"
+    }
     
     try:
-        return requests.get(ai_url, timeout=5).json()["model_name"]
+        result = requests.post(ai_url, json=payload, timeout=5).json()["message"]["content"]
+        if result:
+            return "llama3.2"
     except requests.exceptions.RequestException as e:
         print(f"Error fetching model name: {e}")
         return "herp-wizard-0.1"
